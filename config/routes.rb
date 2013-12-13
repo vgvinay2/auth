@@ -4,7 +4,8 @@ Auth::Application.routes.draw do
   get "/users/news", :to => "users#news"
   get "/users/contact", :to => "users#contact"
   get "/users/about", :to => "users#about"
-  get "/users/index", :to => "users#index"
+  root "users#index"
+  
   
   
   resources :flights

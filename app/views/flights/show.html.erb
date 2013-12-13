@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Flight id:</strong>
+  <%= @flight.id %>
+</p>
+
+<p>
   <strong>Departure:</strong>
   <%= @flight.departure %>
 </p>
@@ -24,6 +29,9 @@
   <strong>Capacity:</strong>
   <%= @flight.capacity %>
 </p>
+<%= render :partial=> "/seats/form"%>
+<%= render :partial=> "/seats/seat_list"%>
 
 <%= link_to 'Edit', edit_flight_path(@flight) %> |
+
 <%= link_to 'Back', flights_path %>

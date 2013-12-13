@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-     render :template => 'sessions/home', :notice => "Logged in!"
+     render :template => 'sessions/home', :notice => "You are Logged in!"
      # redirect_to sessions_home_path, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to users_url, :notice => "You  are Logged out!"
   end
 end

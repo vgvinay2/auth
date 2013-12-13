@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   
-  
         def new
           @user = User.new
         end
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
         end
 
         def create
-          @user = User.new(user_params)
+          @user = User.new(user_params) # do not search this method anywhere 1: User.new 2: usser.save
             if @user.save
               redirect_to new_user_path ,:notice => "You have successfully filled you profile!!!"
             else

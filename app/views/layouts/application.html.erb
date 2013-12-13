@@ -1,47 +1,39 @@
-<div id="content" style=background-color: #EEEEEE;
-float: left;
-font-size: xx-large;
-font-weight: bold;
-width: 1233px;">
-MAKE OUR TRIP
-</div>
-
 <!DOCTYPE html>
 <html>
-<head>
-<title>Auth</title>
-<%= stylesheet_link_tag :all %>
-<%= javascript_include_tag :defaults %>
-<%= csrf_meta_tag %>
+	<head>
+		<title>Auth</title>
+		<%= stylesheet_link_tag :application %>
+		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
+	</head>
+	<body>
 
-<%= stylesheet_link_tag :application %>
-<%= javascript_include_tag :defaults %>
-<%= csrf_meta_tag %>
-</head>
-<body>
-<% flash.each do |name, msg| %>
-<%= content_tag :div, msg, :id => "flash#{name}" %>
-<% end %>
+		<div class="header">
+			<h1 style="margin-bottom:0;">MAKE OUR TRIP</h1>
+		</div>
 
-<%= yield %>
+		<% flash.each do |name, msg| %>
+		<%= content_tag :div, msg, :id => "flash#{name}" %>
+		<% end %>
+		<br />
 
-<%= link_to "Home", :controller =>   "users",:action => "home" %> &nbsp;&nbsp;
-<%= link_to "News", :controller =>   "users",:action => "news"  %> &nbsp;&nbsp;
-<%= link_to "Contact",:controller => "users",:action =>"contact" %> &nbsp;&nbsp;
-<%= link_to "about", :controller =>  "users",:action => "about"%> &nbsp;&nbsp;
-<%= link_to "Login", :controller =>  "users",:action => "index"%> &nbsp;&nbsp;
-<%= link_to "Book Your seat", :controller =>  "seats",:action => "new"%> &nbsp;&nbsp;
-<%= link_to "Book Your Flight", :controller =>  "flights",:action => "new"%> &nbsp;&nbsp;
-
-<div id="user_nav">
-	<% if current_user %>
-	Logged in as <%= current_user.email %>
-	<%= link_to "Log out", log_out_path %>
-	<% else %>
-
-	<% end %>
-</div>
-
-</body>
-
+		<%= yield %>
+		<%if !current_user.blank? %>
+		<hr>
+		<%= link_to "Home", :controller =>   "users",:action => "home" %> &nbsp;&nbsp;
+		<%= link_to "News", :controller =>   "users",:action => "news"  %> &nbsp;&nbsp;
+		<%= link_to "Contact",:controller => "users",:action =>"contact" %> &nbsp;&nbsp;
+		<%= link_to "about", :controller =>  "users",:action => "about"%> &nbsp;&nbsp;
+		<%= link_to "Book Your seat", :controller =>  "seats",:action => "new"%> &nbsp;&nbsp;
+		<%= link_to "Book Your Flight", :controller =>  "flights",:action => "new"%> &nbsp;&nbsp;
+		<hr>
+		<%end%>
+		
+		<div id="user_nav">
+			<% if current_user %>
+			<h2>Logged in as</h2> <%= current_user.email %><br/>
+			<%= link_to "Log out", log_out_path %>
+			<% end %>
+		</div>
+	</body>
 </html>

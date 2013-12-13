@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
+	<!-- <%= f.hidden_field :flight_id, :value => @flight.id if @flight %> -->
+
+<% if !@flight %>
   <div class="field">
     <%= f.label :flight_id %><br>
     <%= f.number_field :flight_id %>
   </div>
+<% end %>
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
